@@ -1,0 +1,456 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.2
+-- Dumped by pg_dump version 15.2
+
+-- Started on 2023-05-03 16:44:19
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 218 (class 1259 OID 16412)
+-- Name: Socio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Socio" (
+    id integer NOT NULL,
+    nombre character varying
+);
+
+
+ALTER TABLE public."Socio" OWNER TO postgres;
+
+--
+-- TOC entry 217 (class 1259 OID 16411)
+-- Name:  Socio_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public." Socio_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public." Socio_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3364 (class 0 OID 0)
+-- Dependencies: 217
+-- Name:  Socio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public." Socio_id_seq" OWNED BY public."Socio".id;
+
+
+--
+-- TOC entry 216 (class 1259 OID 16402)
+-- Name: Libro; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Libro" (
+    id integer NOT NULL,
+    titulo character varying,
+    autor character varying,
+    ejemplares numeric,
+    tema integer NOT NULL
+);
+
+
+ALTER TABLE public."Libro" OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 16431)
+-- Name: Libro_Socio; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Libro_Socio" (
+    "Libro_id" integer NOT NULL,
+    " Socio_id" integer NOT NULL,
+    fecha_prestamo date NOT NULL,
+    fecha_devolucion date
+);
+
+
+ALTER TABLE public."Libro_Socio" OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 16430)
+-- Name: Libro_ Socio_ Socio_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Libro_ Socio_ Socio_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Libro_ Socio_ Socio_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3365 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: Libro_ Socio_ Socio_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Libro_ Socio_ Socio_id_seq" OWNED BY public."Libro_Socio"." Socio_id";
+
+
+--
+-- TOC entry 221 (class 1259 OID 16429)
+-- Name: Libro_ Socio_Libro_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Libro_ Socio_Libro_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Libro_ Socio_Libro_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3366 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: Libro_ Socio_Libro_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Libro_ Socio_Libro_id_seq" OWNED BY public."Libro_Socio"."Libro_id";
+
+
+--
+-- TOC entry 214 (class 1259 OID 16400)
+-- Name: Libro_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Libro_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Libro_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3367 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Libro_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Libro_id_seq" OWNED BY public."Libro".id;
+
+
+--
+-- TOC entry 215 (class 1259 OID 16401)
+-- Name: Libro_tema_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Libro_tema_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Libro_tema_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3368 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Libro_tema_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Libro_tema_seq" OWNED BY public."Libro".tema;
+
+
+--
+-- TOC entry 220 (class 1259 OID 16421)
+-- Name: Tema; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Tema" (
+    id integer NOT NULL,
+    nombre character varying
+);
+
+
+ALTER TABLE public."Tema" OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16420)
+-- Name: Tema_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public."Tema_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public."Tema_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 3369 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: Tema_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public."Tema_id_seq" OWNED BY public."Tema".id;
+
+
+--
+-- TOC entry 3190 (class 2604 OID 16405)
+-- Name: Libro id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro" ALTER COLUMN id SET DEFAULT nextval('public."Libro_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3191 (class 2604 OID 16406)
+-- Name: Libro tema; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro" ALTER COLUMN tema SET DEFAULT nextval('public."Libro_tema_seq"'::regclass);
+
+
+--
+-- TOC entry 3194 (class 2604 OID 16434)
+-- Name: Libro_Socio Libro_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro_Socio" ALTER COLUMN "Libro_id" SET DEFAULT nextval('public."Libro_ Socio_Libro_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3195 (class 2604 OID 16435)
+-- Name: Libro_Socio  Socio_id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro_Socio" ALTER COLUMN " Socio_id" SET DEFAULT nextval('public."Libro_ Socio_ Socio_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3192 (class 2604 OID 16415)
+-- Name: Socio id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Socio" ALTER COLUMN id SET DEFAULT nextval('public." Socio_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3193 (class 2604 OID 16424)
+-- Name: Tema id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Tema" ALTER COLUMN id SET DEFAULT nextval('public."Tema_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3351 (class 0 OID 16402)
+-- Dependencies: 216
+-- Data for Name: Libro; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Libro" (id, titulo, autor, ejemplares, tema) FROM stdin;
+1	Cuando fue 1 más 1	El fantástico Ralph	123	1
+2	La espada del destino	Andrzej Sapkowski	333	2
+3	Veintemil leguas de viaje submarino	Julio Verne	232	3
+4	La relatividad	Albert Einstein	545	4
+\.
+
+
+--
+-- TOC entry 3358 (class 0 OID 16431)
+-- Dependencies: 223
+-- Data for Name: Libro_Socio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Libro_Socio" ("Libro_id", " Socio_id", fecha_prestamo, fecha_devolucion) FROM stdin;
+1	2	2023-05-04	2023-05-06
+2	4	2023-05-04	2023-05-06
+3	3	2023-05-04	2023-05-06
+\.
+
+
+--
+-- TOC entry 3353 (class 0 OID 16412)
+-- Dependencies: 218
+-- Data for Name: Socio; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Socio" (id, nombre) FROM stdin;
+2	Francisco
+3	Javier
+4	Luis
+\.
+
+
+--
+-- TOC entry 3355 (class 0 OID 16421)
+-- Dependencies: 220
+-- Data for Name: Tema; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public."Tema" (id, nombre) FROM stdin;
+1	Matemáticas
+2	Fantástica
+3	Ciencia Ficción
+4	Física
+\.
+
+
+--
+-- TOC entry 3370 (class 0 OID 0)
+-- Dependencies: 217
+-- Name:  Socio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public." Socio_id_seq"', 4, true);
+
+
+--
+-- TOC entry 3371 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: Libro_ Socio_ Socio_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Libro_ Socio_ Socio_id_seq"', 1, false);
+
+
+--
+-- TOC entry 3372 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: Libro_ Socio_Libro_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Libro_ Socio_Libro_id_seq"', 1, false);
+
+
+--
+-- TOC entry 3373 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Libro_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Libro_id_seq"', 4, true);
+
+
+--
+-- TOC entry 3374 (class 0 OID 0)
+-- Dependencies: 215
+-- Name: Libro_tema_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Libro_tema_seq"', 1, false);
+
+
+--
+-- TOC entry 3375 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: Tema_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public."Tema_id_seq"', 4, true);
+
+
+--
+-- TOC entry 3199 (class 2606 OID 16419)
+-- Name: Socio  Socio_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Socio"
+    ADD CONSTRAINT " Socio_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3203 (class 2606 OID 16509)
+-- Name: Libro_Socio Libro_Socio_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro_Socio"
+    ADD CONSTRAINT "Libro_Socio_pkey" PRIMARY KEY ("Libro_id", " Socio_id", fecha_prestamo);
+
+
+--
+-- TOC entry 3197 (class 2606 OID 16410)
+-- Name: Libro Libro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro"
+    ADD CONSTRAINT "Libro_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3201 (class 2606 OID 16428)
+-- Name: Tema Tema_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Tema"
+    ADD CONSTRAINT "Tema_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3205 (class 2606 OID 16448)
+-- Name: Libro_Socio Libro_ Socio_ Socio_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro_Socio"
+    ADD CONSTRAINT "Libro_ Socio_ Socio_id_fkey" FOREIGN KEY (" Socio_id") REFERENCES public."Socio"(id) NOT VALID;
+
+
+--
+-- TOC entry 3206 (class 2606 OID 16443)
+-- Name: Libro_Socio Libro_ Socio_Libro_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro_Socio"
+    ADD CONSTRAINT "Libro_ Socio_Libro_id_fkey" FOREIGN KEY ("Libro_id") REFERENCES public."Libro"(id) NOT VALID;
+
+
+--
+-- TOC entry 3204 (class 2606 OID 16438)
+-- Name: Libro Libro_tema_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Libro"
+    ADD CONSTRAINT "Libro_tema_fkey" FOREIGN KEY (tema) REFERENCES public."Tema"(id) NOT VALID;
+
+
+-- Completed on 2023-05-03 16:44:19
+
+--
+-- PostgreSQL database dump complete
+--
+
