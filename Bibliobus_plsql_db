@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2023-05-03 16:44:19
+-- Started on 2023-05-03 16:47:31
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -283,12 +283,10 @@ ALTER TABLE ONLY public."Tema" ALTER COLUMN id SET DEFAULT nextval('public."Tema
 -- Data for Name: Libro; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Libro" (id, titulo, autor, ejemplares, tema) FROM stdin;
-1	Cuando fue 1 más 1	El fantástico Ralph	123	1
-2	La espada del destino	Andrzej Sapkowski	333	2
-3	Veintemil leguas de viaje submarino	Julio Verne	232	3
-4	La relatividad	Albert Einstein	545	4
-\.
+INSERT INTO public."Libro" VALUES (1, 'Cuando fue 1 más 1', 'El fantástico Ralph', 123, 1);
+INSERT INTO public."Libro" VALUES (2, 'La espada del destino', 'Andrzej Sapkowski', 333, 2);
+INSERT INTO public."Libro" VALUES (3, 'Veintemil leguas de viaje submarino', 'Julio Verne', 232, 3);
+INSERT INTO public."Libro" VALUES (4, 'La relatividad', 'Albert Einstein', 545, 4);
 
 
 --
@@ -297,11 +295,9 @@ COPY public."Libro" (id, titulo, autor, ejemplares, tema) FROM stdin;
 -- Data for Name: Libro_Socio; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Libro_Socio" ("Libro_id", " Socio_id", fecha_prestamo, fecha_devolucion) FROM stdin;
-1	2	2023-05-04	2023-05-06
-2	4	2023-05-04	2023-05-06
-3	3	2023-05-04	2023-05-06
-\.
+INSERT INTO public."Libro_Socio" VALUES (1, 2, '2023-05-04', '2023-05-06');
+INSERT INTO public."Libro_Socio" VALUES (2, 4, '2023-05-04', '2023-05-06');
+INSERT INTO public."Libro_Socio" VALUES (3, 3, '2023-05-04', '2023-05-06');
 
 
 --
@@ -310,11 +306,9 @@ COPY public."Libro_Socio" ("Libro_id", " Socio_id", fecha_prestamo, fecha_devolu
 -- Data for Name: Socio; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Socio" (id, nombre) FROM stdin;
-2	Francisco
-3	Javier
-4	Luis
-\.
+INSERT INTO public."Socio" VALUES (2, 'Francisco');
+INSERT INTO public."Socio" VALUES (3, 'Javier');
+INSERT INTO public."Socio" VALUES (4, 'Luis');
 
 
 --
@@ -323,12 +317,10 @@ COPY public."Socio" (id, nombre) FROM stdin;
 -- Data for Name: Tema; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Tema" (id, nombre) FROM stdin;
-1	Matemáticas
-2	Fantástica
-3	Ciencia Ficción
-4	Física
-\.
+INSERT INTO public."Tema" VALUES (1, 'Matemáticas');
+INSERT INTO public."Tema" VALUES (2, 'Fantástica');
+INSERT INTO public."Tema" VALUES (3, 'Ciencia Ficción');
+INSERT INTO public."Tema" VALUES (4, 'Física');
 
 
 --
@@ -448,7 +440,7 @@ ALTER TABLE ONLY public."Libro"
     ADD CONSTRAINT "Libro_tema_fkey" FOREIGN KEY (tema) REFERENCES public."Tema"(id) NOT VALID;
 
 
--- Completed on 2023-05-03 16:44:19
+-- Completed on 2023-05-03 16:47:32
 
 --
 -- PostgreSQL database dump complete

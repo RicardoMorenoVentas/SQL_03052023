@@ -5,7 +5,7 @@
 -- Dumped from database version 15.2
 -- Dumped by pg_dump version 15.2
 
--- Started on 2023-05-03 16:42:53
+-- Started on 2023-05-03 16:46:55
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -280,12 +280,10 @@ ALTER TABLE ONLY public."Lugares_Conductores" ALTER COLUMN "Autobuses_id" SET DE
 -- Data for Name: AUTOBUSES_TABLA; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."AUTOBUSES_TABLA" (id, linea) FROM stdin;
-1	10
-2	15
-3	111
-4	2441
-\.
+INSERT INTO public."AUTOBUSES_TABLA" VALUES (1, 10);
+INSERT INTO public."AUTOBUSES_TABLA" VALUES (2, 15);
+INSERT INTO public."AUTOBUSES_TABLA" VALUES (3, 111);
+INSERT INTO public."AUTOBUSES_TABLA" VALUES (4, 2441);
 
 
 --
@@ -294,12 +292,10 @@ COPY public."AUTOBUSES_TABLA" (id, linea) FROM stdin;
 -- Data for Name: Conductores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Conductores" (id, nombre) FROM stdin;
-1	Manolo
-2	Pepe
-3	Federico
-4	Enrique
-\.
+INSERT INTO public."Conductores" VALUES (1, 'Manolo');
+INSERT INTO public."Conductores" VALUES (2, 'Pepe');
+INSERT INTO public."Conductores" VALUES (3, 'Federico');
+INSERT INTO public."Conductores" VALUES (4, 'Enrique');
 
 
 --
@@ -308,11 +304,9 @@ COPY public."Conductores" (id, nombre) FROM stdin;
 -- Data for Name: Lugares; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Lugares" (id, nombre_lugar) FROM stdin;
-1	Cercedilla
-2	Despeñaperros
-3	Chinchon
-\.
+INSERT INTO public."Lugares" VALUES (1, 'Cercedilla');
+INSERT INTO public."Lugares" VALUES (2, 'Despeñaperros');
+INSERT INTO public."Lugares" VALUES (3, 'Chinchon');
 
 
 --
@@ -321,10 +315,8 @@ COPY public."Lugares" (id, nombre_lugar) FROM stdin;
 -- Data for Name: Lugares_Conductores; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."Lugares_Conductores" ("Lugares_id", "Conductores_id", "Autobuses_id", fecha) FROM stdin;
-1	3	2	2023-05-03
-2	1	3	2023-05-03
-\.
+INSERT INTO public."Lugares_Conductores" VALUES (1, 3, 2, '2023-05-03');
+INSERT INTO public."Lugares_Conductores" VALUES (2, 1, 3, '2023-05-03');
 
 
 --
@@ -444,7 +436,7 @@ ALTER TABLE ONLY public."Lugares_Conductores"
     ADD CONSTRAINT "Lugares_Conductores_Lugares_id_fkey" FOREIGN KEY ("Lugares_id") REFERENCES public."Lugares"(id) NOT VALID;
 
 
--- Completed on 2023-05-03 16:42:53
+-- Completed on 2023-05-03 16:46:55
 
 --
 -- PostgreSQL database dump complete
